@@ -53,6 +53,257 @@ flowchart LR
 
 ```
 
+# 🧠 Arquitetura Detalhada na Azure
+
+## 📌 Visão Geral
+Plataforma de conhecimento baseada em LLM com ingestão, processamento, indexação semântica e consulta inteligente.
+
+---
+
+## 📥 Fontes de Dados
+A plataforma recebe dados de:
+
+- Web articles  
+- Research papers  
+- Repositórios GitHub  
+- Datasets estruturados  
+- Imagens e PDFs  
+- Notas manuais  
+- Clipper / hotkeys  
+
+**Armazenamento inicial:**
+- Azure Blob Storage (zona `raw`)
+
+**Processamento opcional:**
+- Azure AI Document Intelligence (OCR e parsing)
+
+---
+
+## ⚙️ Camada de Ingestão
+
+**Serviços:**
+- Azure Functions (eventos leves)
+- Azure Logic Apps (integrações)
+- Azure Event Grid (event-driven)
+
+**Objetivo:**
+- Desacoplamento da entrada
+- Escalabilidade por volume
+
+---
+
+## 🗄️ Armazenamento
+
+### Estrutura sugerida:
+
+| Diretório   | Função |
+|------------|--------|
+| raw        | dados originais |
+| processed  | dados limpos |
+| chunks     | fragmentos para indexação |
+| artifacts  | outputs gerados |
+
+**Outros componentes:**
+- Azure SQL Database ou Cosmos DB → metadados
+- Azure AI Search → índice semântico e vetorial
+
+---
+
+## 🧠 Processamento e Enriquecimento
+
+### Etapas:
+- Limpeza de texto
+- OCR
+- Normalização
+- Chunking
+- Extração de entidades
+- Geração de embeddings
+- Persistência de metadados
+
+### Serviços:
+- Azure Functions / Container Apps
+- Azure OpenAI
+- Azure AI Search
+
+---
+
+## 🔎 Base de Conhecimento
+
+**Componentes:**
+- Azure Blob Storage → dados base
+- Azure AI Search → índice híbrido
+- Azure SQL / Cosmos DB → catálogo
+- Frontend (ex: Obsidian)
+
+**Capacidades:**
+- Busca semântica
+- Busca vetorial (kNN)
+- Ranking inteligente
+
+---
+
+## 💬 Consulta e Q&A
+
+**Arquitetura:**
+- Frontend → App Service / Static Web App
+- Backend → App Service / Functions
+- LLM → Azure OpenAI
+- Retrieval → Azure AI Search
+
+### Fluxo:
+1. Usuário envia query  
+2. Busca semântica (top-k)  
+3. Construção de contexto  
+4. Geração de resposta  
+
+---
+
+## 📤 Saídas
+
+**Formatos:**
+- Markdown (.md)
+- HTML / PDF
+- Slides
+- Gráficos
+- API REST
+
+**Resposta inclui:**
+- Conteúdo gerado
+- Fontes
+- Score de confiança
+- Metadados
+- Timestamp
+
+---
+
+## 🧹 Linting, Qualidade e Melhoria Contínua
+
+**Funções:**
+- Detectar duplicidade
+- Identificar inconsistências
+- Encontrar gaps
+- Sugerir novos tópicos
+- Validar conexões
+
+**Execução:**
+- Azure Functions
+- Jobs agendados
+
+---
+
+## 🔐 Segurança
+
+**Componentes:**
+- Azure Key Vault
+- Managed Identity
+- Private Endpoints
+- Microsoft Entra ID (RBAC)
+
+---
+
+## 📊 Observabilidade
+
+**Ferramentas:**
+- Azure Monitor
+- Application Insights
+- Log Analytics
+
+**Métricas:**
+- Latência de queries
+- Tempo de indexação
+- Taxa de erro
+- Custo por consulta
+- Qualidade de resposta
+
+---
+
+## 🔁 Evolução
+
+**Ordem recomendada:**
+1. Melhorar chunking  
+2. Melhorar metadados  
+3. Ajustar retrieval  
+4. Aplicar reranking  
+5. Avaliar fine-tuning  
+
+---
+
+## 🏢 Arquitetura Física
+
+### Entrada
+- Azure Front Door  
+- App Service  
+- API Management  
+
+### Aplicação
+- App Service  
+- Azure Functions  
+- Container Apps  
+- Durable Functions  
+
+### IA
+- Azure OpenAI  
+- Azure AI Search  
+- Document Intelligence  
+
+### Dados
+- Azure Blob Storage  
+- Azure SQL / Cosmos DB  
+
+### Segurança
+- Key Vault  
+- Managed Identity  
+- Private Endpoints  
+- VNet Integration  
+- Entra ID  
+
+### Operação
+- Azure Monitor  
+- Application Insights  
+- Log Analytics  
+- Alerts  
+
+---
+
+## 🚀 MVP
+
+- Azure Blob Storage  
+- Azure AI Search  
+- Azure OpenAI  
+- App Service  
+- Azure Functions  
+- Key Vault  
+- Application Insights  
+
+---
+
+## 🏢 Versão Enterprise
+
+- Private Endpoints  
+- API Management  
+- Azure SQL / Cosmos DB  
+- Document Intelligence  
+- Front Door  
+- Pipelines de linting  
+- RBAC avançado  
+
+---
+
+## 🧭 Decisão de Arquitetura
+
+**Stack recomendado:**
+- Blob Storage → origem dos dados  
+- Azure AI Search → núcleo semântico  
+- Azure OpenAI → inteligência  
+- Azure Functions → ingestão  
+- App Service → API/UI  
+- Key Vault + Managed Identity → segurança  
+
+---
+
+## 📎 Fonte
+Conteúdo baseado no documento fornecido pelo usuário :contentReference[oaicite:0]{index=0}
+
 Arquitetura detalhada na Azure
 1. Fontes de dados
 
