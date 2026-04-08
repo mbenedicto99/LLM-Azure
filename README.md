@@ -55,6 +55,23 @@ flowchart LR
 
 # 🧠 Arquitetura Detalhada na Azure
 
+```mermaid
+flowchart LR
+    A[Data Sources] --> B[Ingestion Layer]
+    B --> C[Processing & LLM Enrichment]
+    C --> D[Vector DB + Knowledge Base]
+    D --> E[Query Engine + LLM]
+    E --> F[Output Layer]
+    F --> G[User Interfaces]
+
+    D --> H[Quality & Linting]
+    H --> C
+
+    F --> I[Feedback Loop]
+    I --> J[Fine-tuning / Evolution]
+    J --> C
+```
+
 ## 📌 Visão Geral
 Plataforma de conhecimento baseada em LLM com ingestão, processamento, indexação semântica e consulta inteligente.
 
