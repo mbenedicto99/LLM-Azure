@@ -395,7 +395,7 @@ A plataforma recebe dados de:
 
 ---
 
-## 📎 Fonte
+## Plataformas e Treinamento
 
 # Arquitetura detalhada na Azure com RLAIF + RAG + Databricks
 
